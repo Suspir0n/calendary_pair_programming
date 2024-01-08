@@ -1,0 +1,82 @@
+programa
+{
+    funcao inicio()
+    {
+        inteiro dia_inicial, dia_respectivo, sum
+        logico is_dia_semana_valido = falso, is_dia_inicial_valido = falso, is_dia_respectivo_valido = falso 
+        cadeia dia_semana, mes[5][7] 
+
+        para (inteiro i = 0; i <= 4; i++)  
+        { 
+          mes[i][0] = "Domingo"
+          mes[i][1] = "Segunda"
+          mes[i][2] = "Terça"
+          mes[i][3] = "Quarta"
+          mes[i][4] = "Quinta"
+          mes[i][5] = "Sexta"
+          mes[i][6] = "Sabado"
+        }
+
+        escreva("Informe o dia inicial: ")
+        leia(dia_inicial)
+
+        enquanto(nao is_dia_inicial_valido)  
+        {  
+          se (dia_inicial >= 1){
+            se (dia_inicial <= 30){
+              is_dia_inicial_valido = verdadeiro
+            }
+            senao{
+              escreva("Informe o dia inicial valido: ")
+              leia(dia_inicial)   
+            } 
+          }
+          senao{
+            escreva("Informe o dia inicial valido: ")
+            leia(dia_inicial)   
+          }
+        }
+
+        enquanto(nao is_dia_semana_valido)  
+        { 
+          escreva("Informe seu dia da semana valido: ")
+          leia(dia_semana)
+
+          para (inteiro i = 0; i <= 6; i++)  
+          {  
+            se (dia_semana == mes[0][i]){
+              is_dia_semana_valido = verdadeiro
+            } 
+          }
+        }
+
+        escreva("Informe um dia respectivo: ")
+        leia(dia_respectivo)
+
+        enquanto(nao is_dia_respectivo_valido)  
+        {  
+          se (dia_respectivo > dia_inicial){
+            se (dia_respectivo <= 31){
+              is_dia_respectivo_valido = verdadeiro
+            }
+            senao{
+              escreva("Informe um dia respectivo valido: ")
+              leia(dia_respectivo)  
+            } 
+          }
+          senao{
+            escreva("Informe um dia respectivo valido: ")
+            leia(dia_respectivo)   
+          }
+        }
+
+        sum = (dia_respectivo - dia_inicial) % 7
+
+        para (inteiro i = 0; i <= 6; i++)  
+        {
+            se (dia_semana == mes[0][i]){
+                escreva("O dia respectivo da semana é: ", mes[0][(i + sum) % 7])   
+            }
+        }
+    }
+}
